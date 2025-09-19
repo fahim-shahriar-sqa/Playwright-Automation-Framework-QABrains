@@ -24,28 +24,31 @@ test.describe('Login Page Tests', () => {
     await browser.close();
   });
 
+  
+
+  // Negative test examples:
+  test('should show error for invalid credentials', async () => {
+    const { invalidEmail, invalidPassword } = testData.invalidUser;
+    await loginPage.login( invalidEmail, invalidPassword );
+    await expect(loginPage.errorInvalidEmail).toBeVisible();
+  });
+
+  test('should show error when email is empty', async () => {
+    await loginPage.login("", "Password123");
+    await expect(loginPage.errorEmptyEmail).toBeVisible();
+  });
+
+  test('should show error when password is empty', async () => {
+    await loginPage.login("test@qabrains.com", "");
+    await expect(loginPage.errorEmptyPassword).toBeVisible();
+  });
+
   test('should login successfully with valid credentials', async () => {
     const { ValidEmail, validPassword } = testData.validUser;
     await loginPage.login(ValidEmail, validPassword);
 
     const loggedInUser = await loginPage.getLoggedInUserName();
     expect(loggedInUser).toBe(ValidEmail);
-  });
-
-  // Negative test examples:
-  test('should show error for invalid credentials', async () => {
-    await loginPage.login("wrong@email.com", "wrongpassword");
-    await expect(loginPage.errorInvalidEmail).toBeVisible();
-  });
-
-  test('should show error when email is empty', async () => {
-    await loginPage.login("", "somepassword");
-    await expect(loginPage.errorEmptyEmail).toBeVisible();
-  });
-
-  test('should show error when password is empty', async () => {
-    await loginPage.login("valid@email.com", "");
-    await expect(loginPage.errorEmptyPassword).toBeVisible();
   });
 
 });

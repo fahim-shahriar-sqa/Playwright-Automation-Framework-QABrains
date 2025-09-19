@@ -12,8 +12,8 @@ module.exports = {
   },
 
   emptyUser: {
-    invalidEmail: ' ',
-    invalidPassword: ' ',
+    invalidEmail: '',
+    invalidPassword: '',
   },
 
   addToCartSuccessPopup: 'Added to cart',
