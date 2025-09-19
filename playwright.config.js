@@ -17,7 +17,7 @@ module.exports = defineConfig({
     headless: true,
     screenshot: 'only-on-failure',
     trace: 'on-first-retry',
-    baseURL: "https://www.drharveys.com/?srsltid=AfmBOoqs-ZrgLu3t4rHDbDQuE_0kbGGX4bc8mbMtYsz_T-hZS9LZLAcs",
+    baseURL: "https://practice.qabrains.com/",
     navigationTimeout: 200 * 1000,
     actionTimeout: 50000,
     
